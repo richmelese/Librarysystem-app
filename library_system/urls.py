@@ -20,7 +20,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import (
     UserListCreateView, UserDetailView,
     BookListCreateView, BookDetailView,
-    BorrowListCreateView, BorrowDetailView
+    BorrowListCreateView, BorrowDetailView,CategoryListCreateView, CategoryDetailView
+    
 )
 
 urlpatterns = [
@@ -36,4 +37,7 @@ urlpatterns = [
     # Borrow API Endpoints
     path('borrows/', BorrowListCreateView.as_view(), name='borrow-list'),
     path('borrows/<int:pk>/', BorrowDetailView.as_view(), name='borrow-detail'),
+
+    path('categories/', CategoryListCreateView.as_view(), name='category-list'),
+    path('categories/<int:pk>/', CategoryDetailView.as_view(), name='category-detail'),
 ]
