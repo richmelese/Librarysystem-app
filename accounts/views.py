@@ -1,62 +1,13 @@
-# from django.shortcuts import render, redirect
-# from rest_framework import generics, status
-# from rest_framework.response import Response
-# from .models import CustomUser
-# from .serializers import CustomUserSerializer
-# from .forms import CustomUserCreationForm
 
-# # User Registration View
-# def register(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('login')  # Redirect to login after successful registration
-#     else:
-#         form = CustomUserCreationForm()
-#     return render(request, 'accounts/register.html', {'form': form})
-
-# # List and Create Users
-# class CustomUserListCreateView(generics.ListCreateAPIView):
-#     queryset = CustomUser.objects.all()
-#     serializer_class = CustomUserSerializer
-
-# # Retrieve, Update, Delete User
-# class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = CustomUser.objects.all()
-#     serializer_class = CustomUserSerializer
-#     # permission_classes = [permissions.IsAuthenticated]  # Uncomment to require authentication
-
-#     def perform_update(self, serializer):
-#         # Perform the update operation
-#         serializer.save()
-
-#         # Custom message for update operation
-#         return Response({
-#             "message": "User updated successfully.",
-#             "status": "success",
-#             "data": serializer.data
-#         }, status=status.HTTP_200_OK)
-
-#     def perform_destroy(self, instance):
-#         # Perform the delete operation
-#         instance.delete()
-
-#         # Custom message for delete operation
-#         return Response({
-#             "message": "User deleted successfully.",
-#             "status": "success"
-#         }, status=status.HTTP_204_NO_CONTENT)
 from django.shortcuts import render, redirect
 from rest_framework import generics, status
 from rest_framework.response import Response
 from .models import CustomUser
 from .serializers import CustomUserSerializer
 from .forms import CustomUserCreationForm
-
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from django.contrib.auth.models import User
 # User Registration View
 def register(request):
     if request.method == 'POST':
