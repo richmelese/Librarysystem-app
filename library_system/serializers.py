@@ -19,7 +19,7 @@
 #         model = Borrow
 #         fields = '__all__'
 from rest_framework import serializers
-from .models import CustomUser, Book, Borrow
+from .models import CustomUser, Book, Borrow,Category
 
 # Serializer for CustomUser
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -42,3 +42,9 @@ class BorrowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Borrow
         fields = ['id', 'user', 'book', 'borrow_date', 'return_date']
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
